@@ -1,0 +1,16 @@
+# Reading the Grid — Python dependencies
+# Install with:  pip install -r requirements.txt
+# Versions are minimums known to work on Apple Silicon (arm64). pip will resolve the
+# latest compatible stable releases. torch on Apple Silicon ships with MPS (Metal) support.
+
+torch>=2.2            # Deep learning framework — defines/trains the CNN; MPS backend for Apple Silicon GPU
+torchvision>=0.17     # Pretrained models, image transforms, and dataset utilities for torch
+numpy>=1.26           # Core numerical arrays — underpins almost everything below
+pandas>=2.1           # Tabular data handling — labels, metrics, and results bookkeeping
+matplotlib>=3.8       # Plotting — training curves and Grad-CAM/heatmap visualization
+pillow>=10.0          # Image loading/saving (PIL) — reads the electroluminescence images
+scikit-learn>=1.4     # Metrics, train/test splits, and classical ML utilities
+jupyter>=1.0          # Notebook environment for exploration and experiments
+streamlit>=1.30       # Web app to upload an image and view the prediction + Grad-CAM overlay
+grad-cam>=1.5         # Grad-CAM implementation (imports as `pytorch_grad_cam`) for heatmaps
+opencv-python>=4.9    # Image processing — resizing, color maps, and overlaying heatmaps
