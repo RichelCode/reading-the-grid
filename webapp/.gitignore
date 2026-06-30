@@ -1,0 +1,10 @@
+# Frontend build artifacts and dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Frontend static files copied into the backend during the Docker build
+backend/static/
+
+# Python caches
+**/__pycache__/
+*.pyc

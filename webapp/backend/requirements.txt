@@ -1,0 +1,13 @@
+# Reading the Grid backend (Python 3.12)
+# Web framework and server
+fastapi              # API framework
+uvicorn[standard]    # ASGI server that runs the app
+python-multipart     # parses multipart/form-data for image uploads (used in a later step)
+
+# Model inference stack (present now so the Docker image is ready; wired in a later step)
+torch                # runs the fine-tuned ResNet18
+torchvision          # model architecture and image transforms
+pillow               # image loading
+numpy                # array handling
+opencv-python        # image processing and Grad-CAM overlay rendering
+grad-cam             # Grad-CAM heatmaps (imports as pytorch_grad_cam)
