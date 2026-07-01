@@ -1,0 +1,29 @@
+# The Docker build context is the repo root (see webapp/Dockerfile). Keep it small: ship
+# only what the image needs — webapp/, src/, and the fine-tuned checkpoint under models/.
+
+# Version control and datasets (the raw ELPV data is large and unused at inference time).
+.git
+data/
+
+# Everything under models/ except the one checkpoint the backend loads.
+models/*
+!models/best_model_finetuned.pth
+
+# Frontend build artifacts and dependencies (rebuilt inside the image).
+webapp/frontend/node_modules
+webapp/frontend/dist
+webapp/backend/static
+
+# Notebooks, the Streamlit prototype, and local Python environments.
+notebooks/
+app/
+venv/
+.venv/
+
+# Caches and OS/editor cruft.
+**/__pycache__/
+**/*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+.vscode/
+.idea/

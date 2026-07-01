@@ -57,8 +57,18 @@ python src/train.py --data data/ --epochs 25 --batch-size 32
 
 ## Running the App
 
-_TODO:_ The Streamlit app lets you upload an EL image and view the predicted fault status
-alongside a Grad-CAM heatmap overlay.
+The primary interface is the web app under `webapp/` — a FastAPI backend that runs the
+fine-tuned model and computes the Grad-CAM overlay, and a React frontend for uploading a
+cell image and inspecting the result. See [`webapp/README.md`](webapp/README.md) for local
+development and Docker/Hugging Face Spaces deployment. Quick start:
+
+```bash
+# Backend (from webapp/backend), then frontend (from webapp/frontend)
+uvicorn main:app --reload --port 8000
+npm run dev
+```
+
+An earlier Streamlit prototype remains at `app/app.py` for reference:
 
 ```bash
 streamlit run app/app.py
