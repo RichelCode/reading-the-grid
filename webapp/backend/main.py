@@ -45,7 +45,11 @@ from pytorch_grad_cam.utils.model_targets import ClassifierOutputTarget
 
 # --- Path resolution ---------------------------------------------------------------
 BACKEND_DIR = Path(__file__).resolve().parent
-REPO_ROOT = BACKEND_DIR.parents[1]  # webapp/backend -> webapp -> repo root
+# In local dev this file lives at webapp/backend/main.py, so parents[1] is the repo root. In
+# the container the backend is copied to /app, which has no second parent, so fall back to
+# BACKEND_DIR; the BACKEND_DIR-relative candidates in the resolvers below then locate src/
+# and the checkpoint at /app/src and /app/models.
+REPO_ROOT = BACKEND_DIR.parents[1] if len(BACKEND_DIR.parents) > 1 else BACKEND_DIR
 
 
 def _resolve_src_dir() -> Path:
