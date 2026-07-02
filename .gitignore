@@ -33,3 +33,6 @@ __pycache__/
 # --- IDEs ---
 .vscode/
 .idea/
+
+# Heavy original photography (optimized versions live in webapp/frontend/public/images/)
+webapp/frontend/image-sources/
