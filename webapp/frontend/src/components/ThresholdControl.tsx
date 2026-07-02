@@ -25,8 +25,8 @@ export default function ThresholdControl({ value, onChange }: Props) {
         aria-label="Decision threshold"
       />
       <div className="range-scale mono">
-        <span>0.00 — healthy</span>
-        <span>faulty — 1.00</span>
+        <span>0.00 healthy</span>
+        <span>faulty 1.00</span>
       </div>
 
       <p className="helper-text">
