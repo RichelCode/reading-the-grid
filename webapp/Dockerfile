@@ -28,7 +28,13 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies first for layer caching.
+# Install CPU-only PyTorch first, from the PyTorch CPU wheel index, so the requirements
+# install below is already satisfied and does not pull the much larger default CUDA build.
+# Hugging Face Spaces on the free tier are CPU-only, so the CUDA build would only bloat the
+# image and slow the build.
+RUN pip install --no-cache-dir torch torchvision --index-url https://download.pytorch.org/whl/cpu
+
+# Install the remaining Python dependencies. torch and torchvision are already satisfied.
 COPY webapp/backend/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
